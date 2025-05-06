@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Probabilité de Défaut</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        color: #333;
+      }
+      div.container.content {
+        margin-left: 350px;
+      }
+      div.container {
+        margin-top: 10px;
+        margin-left: 180px;
+        max-width: 80%;
+        padding: 2rem;
+      }
+      .container {
+        padding-left: 200px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      }
+      h1,
+      h2 {
+        color: #333;
+        margin-bottom: 10px;
+        border-bottom: 2px solid #d4af37;
+        padding-bottom: 10px;
+      }
+      h1 {
+        color: #f4c542;
+      }
+      h2 {
+        color: #333;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      label {
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+      select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      button[type="submit"] {
+        background-color: #f4c542;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+      button[type="submit"]:hover {
+        background-color: #e1b52e;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: center; /* Center table content */
+      }
+      th {
+        background-color: #333;
+        color: #d4af37;
+      }
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+
+      .pagination {
+        justify-content: center;
+        margin: 20px 0;
+    }
+    .pagination .page-item.active .page-link {
+        background-color: #f4c542;
+        border-color: #f4c542;
+        color: #333;
+    }
+    .pagination .page-link {
+        color: #333;
+    }
+    .pagination .page-link:hover {
+        background-color: #e1b52e;
+        color: #fff;
+    }
+    </style>
+  </head>
+  <body>
+    {% extends 'base.html' %}
+    {% load humanize %}
+    
+    {% block title %}Récap Scores{% endblock %}
+    
+    {% block content %}
+    <div class="container mt-5">
+        <h1 class="mb-4" style="text-align: center; color: #d4af37;">Récap Scores</h1>
+        {% if error %}
+            <div class="alert alert-danger">{{ error }}</div>
+        {% endif %}
+    
+        {% if page_obj %}
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th style="text-align: center;">Code Tiers</th>
+                        <th style="text-align: center;">Score Financier</th>
+                        <th style="text-align: center;">Score Comportemental </th>
+                        <th style="text-align: center;">Score Global</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for company in page_obj %}
+                        <tr>
+                            <td>{{ company.numtiers }}</td>
+                            <td>{{ company.score_financier|floatformat:2 }}</td>
+                            <td>{{ company.score_comportemental_total|floatformat:2 }}</td>
+                            <td>{{ company.score_total_global|floatformat:2 }}</td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="4" class="text-center">Aucune donnée disponible</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+    
+            <!-- Pagination -->
+            <nav aria-label="Pagination">
+                <ul class="pagination">
+                    {% if page_obj.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Précédent">
+                                <span aria-hidden="true">«</span>
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled">
+                            <span class="page-link" aria-hidden="true">«</span>
+                        </li>
+                    {% endif %}
+    
+                    {% for num in page_obj.paginator.page_range %}
+                        {% if page_obj.number == num %}
+                            <li class="page-item active">
+                                <span class="page-link">{{ num }}</span>
+                            </li>
+                        {% elif num > page_obj.number|add:-3 and num < page_obj.number|add:3 %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+    
+                    {% if page_obj.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Suivant">
+                                <span aria-hidden="true">»</span>
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled">
+                            <span class="page-link" aria-hidden="true">»</span>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        {% else %}
+            <p class="text-center">Aucun client disponible.</p>
+        {% endif %}
+    </div>
+    {% endblock %}
+  </body>
+</html>
