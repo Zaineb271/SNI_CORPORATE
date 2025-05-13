@@ -17,9 +17,22 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from myapp import views
+from django.contrib import admin
+from django.urls import path, include
+from django.views.i18n import set_language
+from django.urls import path
+from django.views.generic import TemplateView
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('myapp.urls')),
+    path('i18n/', set_language, name='set_language'),
+    path('', TemplateView.as_view(template_name='base.html'), name='home'),
+    path('i18n/', include('django.conf.urls.i18n')),
+    path('', include('myapp.urls', namespace='myapp')),
+
+
+   
 ]
 

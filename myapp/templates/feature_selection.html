@@ -1,12 +1,14 @@
+{% extends 'base.html' %}
+{% load i18n %}
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="{{ LANGUAGE_CODE }}" dir="{% if LANGUAGE_CODE == 'ar' %}rtl{% else %}ltr{% endif %}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sélection des caractéristiques</title>
+    <title>{% block title %}{% trans "Feature Selection" %}{% endblock %}</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <style>
-        body {
+body {
             background-color: #f5f5f5;
             font-family: 'Arial', sans-serif;
         }
@@ -62,6 +64,27 @@
             text-align: center;
             vertical-align: middle; /* Centrer verticalement */
         }
+  
+        .alert {
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .metric-header td {
+            background-color: #ecf0f1;
+            font-weight: bold;
+            text-align: center;
+            color: #333;
+            padding: 0.3rem; /* Réduire le padding des en-têtes de section */
+        }
+ 
+        .table tbody td.ponderation {
+            text-align: center;
+            vertical-align: middle;
+        }
+        .table-responsive {
+            margin-bottom: 0; /* Remove margin below table container */
+            padding-bottom: 0; /* Remove padding below table container */
+        }
         .btn-custom {
             background-color: #d4af37;
             color: #222;
@@ -85,230 +108,258 @@
             font-weight: bold;
             text-align: center;
             color: #333;
-            padding: 0.3rem; /* Réduire le padding des en-têtes de section */
+            padding: 0.3rem;
+        }
+        /* RTL adjustments for Arabic */
+        [dir="rtl"] .container {
+            margin-left: 0;
+            margin-right: 200px;
+        }
+        [dir="rtl"] .table tbody td {
+            text-align: center;
+        }
+        [dir="rtl"] .metric-header td {
+            text-align: center;
+        }
+        .language-selector {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        [dir="rtl"] .language-selector {
+            right: auto;
+            left: 10px;
         }
     </style>
 </head>
 <body>
-    {% extends 'base.html' %}
-
-    {% block title %}Feature Selection{% endblock %}
-
+    <div class="language-selector">
+        <form action="{% url 'set_language' %}" method="post">
+            {% csrf_token %}
+            <select name="language" onchange="this.form.submit()">
+                {% get_current_language as LANGUAGE_CODE %}
+                {% get_available_languages as LANGUAGES %}
+                {% for lang in LANGUAGES %}
+                    <option value="{{ lang.0 }}" {% if lang.0 == LANGUAGE_CODE %}selected{% endif %}>
+                        {{ lang.1 }}
+                    </option>
+                {% endfor %}
+            </select>
+        </form>
+    </div>
     {% block content %}
     <div class="container">
       <div class="row">
           <div class="col-md-12">
-              <h2 class="mb-4 text-center" style="color: #d4af37;">Sélection des Variables Scoring</h2>
+              <h2 class="mb-4 text-center" style="color: #d4af37;">{% trans 'Scoring Variables Configuration' %}</h2>
               <div class="card">
                   <div class="card-body">
                       <div class="section">
-                          <h5 class="section-title">Pilier Financier</h5>
+                          <h5 class="section-title" style="text-align: center;">{% trans 'Financial Pillar' %}</h5>
                           <div class="table-responsive">
                               <table class="table table-bordered table-striped">
                                   <thead>
                                       <tr>
                                           <th></th>
-                                          <th>Score attribué</th>
-                                          <th>Pondération</th>
+                                          <th style="text-align: center;">{% trans 'Assigned Score' %}</th>
+                                          <th style="text-align: center;">{% trans 'Weighting' %}</th>
                                       </tr>
                                   </thead>
                                   <tbody>
                                       <!-- Score Autonomie Financière -->
                                       <tr class="metric-header">
-                                          <td colspan="3" , style="text-align: left;">Score Autonomie Financière : Capitaux propres/Total du bilan</td>
+                                          <td colspan="3" style="text-align: left;">{% trans 'Financial Autonomy Score: Equity/Total Balance Sheet' %}</td>
                                       </tr>
                                       <tr>
-                                          <td>Ratio 0</td>
-                                          <td>0</td>
-                                          <td rowspan="5" class="ponderation">25%</td>
+                                          <td style="text-align: center;">{% trans 'Ratio 0' %}</td>
+                                          <td style="text-align: center;">0</td>
+                                          <td rowspan="5" class="ponderation" style="text-align: center;">25%</td>
                                       </tr>
                                       <tr>
-                                          <td>Ratio < 10%</td>
-                                          <td>5</td>
+                                          <td style="text-align: center;">{% trans 'Ratio < 10' %}%</td>
+                                          <td style="text-align: center;">5</td>
                                       </tr>
                                       <tr>
-                                          <td>Ratio < 40%</td>
-                                          <td>10</td>
+                                          <td style="text-align: center;">{% trans 'Ratio < 40' %}%</td>
+                                          <td style="text-align: center;">10</td>
                                       </tr>
                                       <tr>
-                                          <td>Ratio < 40%</td>
-                                          <td>15</td>
+                                          <td  style="text-align: center;">{% trans 'Ratio < 40' %}%</td>
+                                          <td style="text-align: center;">15</td>
                                       </tr>
                                       <tr>
-                                          <td>Ratio > 40%</td>
-                                          <td>20</td>
+                                          <td style="text-align: center;">{% trans 'Ratio > 40' %}%</td>
+                                          <td style="text-align: center;">20</td>
                                       </tr>
                                       <!-- Score Rentabilité Nette -->
                                       <tr class="metric-header">
-                                          <td colspan="3" , style="text-align: left;">Score Rentabilité Nette : Résultat Net / Chiffre d'affaires</td>
+                                          <td colspan="3" style="text-align: left;">{% trans 'Net Profitability Score: Net Income / Revenue' %}</td>
                                       </tr>
                                       <tr>
-                                          <td>Ratio 0</td>
-                                          <td>0</td>
-                                          <td rowspan="5" class="ponderation">25%</td>
+                                          <td style="text-align: center;">{% trans 'Ratio 0' %}</td>
+                                          <td style="text-align: center;">0</td>
+                                          <td rowspan="5" class="ponderation" style="text-align: center;">25%</td>
                                       </tr>
                                       <tr>
-                                          <td>Ratio < 5%</td>
-                                          <td>5</td>
+                                          <td style="text-align: center;">{% trans 'Ratio < 5' %}%</td>
+                                          <td style="text-align: center;">5</td>
                                       </tr>
                                       <tr>
-                                          <td>Ratio < 10%</td>
-                                          <td>10</td>
+                                          <td style="text-align: center;">{% trans 'Ratio < 10' %}%</td>
+                                          <td style="text-align: center;">10</td>
                                       </tr>
                                       <tr>
-                                          <td>Ratio < 20%</td>
-                                          <td>15</td>
+                                          <td style="text-align: center;">{% trans 'Ratio < 20' %}%</td>
+                                          <td style="text-align: center;">15</td>
                                       </tr>
                                       <tr>
-                                          <td>Ratio > 20%</td>
-                                          <td>20</td>
+                                          <td style="text-align: center;">{% trans 'Ratio > 20' %}%</td>
+                                          <td style="text-align: center;">20</td>
                                       </tr>
                                       <!-- Score Liquidité Générale -->
                                       <tr class="metric-header">
-                                          <td colspan="3" , style="text-align: left;">Score Liquidité Générale : Actifs circulants / Passifs courants</td>
+                                          <td colspan="3" style="text-align: left;">{% trans 'General Liquidity Score: Current Assets / Current Liabilities' %}</td>
                                       </tr>
                                       <tr>
-                                          <td>Ratio 0</td>
-                                          <td>0</td>
-                                          <td rowspan="4" class="ponderation">25%</td>
+                                          <td style="text-align: center;">{% trans 'Ratio 0' %}</td>
+                                          <td style="text-align: center;">0</td>
+                                          <td rowspan="4" class="ponderation" style="text-align: center;">25%</td>
                                       </tr>
                                       <tr>
-                                          <td>Ratio < 1</td>
-                                          <td>10</td>
+                                          <td style="text-align: center;">{% trans 'Ratio < 1' %}</td>
+                                          <td style="text-align: center;">10</td>
                                       </tr>
                                       <tr>
-                                          <td>Ratio < 2</td>
-                                          <td>15</td>
+                                          <td style="text-align: center;">{% trans 'Ratio < 2' %}</td>
+                                          <td style="text-align: center;">15</td>
                                       </tr>
                                       <tr>
-                                          <td>Ratio > 2</td>
-                                          <td>20</td>
+                                          <td style="text-align: center;">{% trans 'Ratio > 2' %}</td>
+                                          <td style="text-align: center;">20</td>
                                       </tr>
                                       <!-- Score Endettement -->
                                       <tr class="metric-header">
-                                          <td colspan="3" , style="text-align: left;">Score Endettement : Dettes financières / CAF</td>
+                                          <td colspan="3" style="text-align: left;">{% trans 'Debt Score: Financial Debt / Cash Flow' %}</td>
                                       </tr>
                                       <tr>
-                                          <td>Ratio 0</td>
-                                          <td>0</td>
-                                          <td rowspan="4" class="ponderation">25%</td>
-
+                                          <td style="text-align: center;">{% trans 'Ratio 0' %}</td>
+                                          <td style="text-align: center;">0</td>
+                                          <td rowspan="4" class="ponderation" style="text-align: center;">25%</td>
                                       </tr>
                                       <tr>
-                                          <td>Ratio > 5</td>
-                                          <td>0</td>
+                                          <td style="text-align: center;">{% trans 'Ratio > 5' %}</td>
+                                          <td style="text-align: center;">0</td>
                                       </tr>
                                       <tr>
-                                          <td>Ratio ≥ 2.5</td>
-                                          <td>5</td>
+                                          <td style="text-align: center;">{% trans 'Ratio ≥ 2.5' %}</td>
+                                          <td style="text-align: center;">5</td>
                                       </tr>
                                       <tr>
-                                          <td>Ratio < 2.5</td>
-                                          <td>20</td>
+                                          <td style="text-align: center;">{% trans 'Ratio < 2.5' %}</td>
+                                          <td style="text-align: center;">20</td>
                                       </tr>
                                   </tbody>
                               </table>
                           </div>
                       </div>
-                  
-                      <!-- Second tableau (Pilier Non Financier) -->
+                      <!-- Second tableau (Pilier Comportemental) -->
                       <div class="section">
-                        <h5 class="section-title">Pilier Comportemental</h5>
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-striped">
-                                <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th>Score attribué</th>
-                                        <th>Pondération</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <!-- Score Défaut -->
-                                    <tr class="metric-header">
-                                        <td colspan="3" style="text-align: left;">Score Défaut de paiement </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Absence d'impayés</td>
-                                        <td>20</td>
-                                        <td rowspan="2" class="ponderation">40%</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Présence d'impayés</td>
-                                        <td>0</td>
-                                    </tr>
-                                    <!-- Score Ancienneté -->
-                                    <tr class="metric-header">
-                                        <td colspan="3" style="text-align: left;">Score Ancienneté de la Relation </td>
-                                    </tr>
-                                    <tr>
-                                        <td>[10 , +&infin; [</td>
-                                        <td>20</td>
-                                        <td rowspan="4" class="ponderation">30%</td>
-                                    </tr>
-                                    <tr>
-                                        <td>[5 , 10[</td>
-                                        <td>15</td>
-                                    </tr>
-                                    <tr>
-                                        <td>[3 , 5[</td>
-                                        <td>5</td>
-                                    </tr>
-                                    <tr>
-                                        <td>[0 , 3[</td>
-                                        <td>0</td>
-                                    </tr>
-                                    <!-- Score Réputation -->
-                                    <tr class="metric-header">
-                                        <td colspan="3" style="text-align: left;">Score Réputation de la Relation</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Très bonne</td>
-                                        <td>20</td>
-                                        <td rowspan="4" class="ponderation">15%</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Bonne</td>
-                                        <td>15</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Moyenne</td>
-                                        <td>10</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Mauvais</td>
-                                        <td>5</td>
-                                    </tr>
-                                    <!-- Score Positionnement -->
-                                    <tr class="metric-header">
-                                        <td colspan="3" style="text-align: left;">Score Positionnement sur le marché</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Leader</td>
-                                        <td>20</td>
-                                        <td rowspan="4" class="ponderation">15%</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Acteur majeur</td>
-                                        <td>15</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Acteur marginal</td>
-                                        <td>10</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Non significatif</td>
-                                        <td>5</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                          <h5 class="section-title" style="text-align: center;">{% trans 'Behavioral Pillar' %}</h5>
+                          <div class="table-responsive">
+                              <table class="table table-bordered table-striped">
+                                  <thead>
+                                      <tr>
+                                          <th></th>
+                                          <th style="text-align: center;">{% trans 'Assigned Score' %}</th>
+                                          <th style="text-align: center;">{% trans 'Weighting' %}</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      <!-- Score Défaut -->
+                                      <tr class="metric-header">
+                                          <td colspan="3" style="text-align: left;">{% trans 'Payment Default Score' %}</td>
+                                      </tr>
+                                      <tr>
+                                          <td style="text-align: center;">{% trans 'No Defaults' %}</td>
+                                          <td style="text-align: center;">20</td>
+                                          <td rowspan="2" class="ponderation" style="text-align: center;">40%</td>
+                                      </tr>
+                                      <tr>
+                                          <td style="text-align: center;">{% trans 'Has Defaults' %}</td>
+                                          <td style="text-align: center;">0</td>
+                                      </tr>
+                                      <!-- Score Ancienneté -->
+                                      <tr class="metric-header">
+                                          <td colspan="3" style="text-align: left;">{% trans 'Relationship Age Score' %}</td>
+                                      </tr>
+                                      <tr>
+                                          <td style="text-align: center;">{% trans '[10, +∞ [' %}</td>
+                                          <td style="text-align: center;">20</td>
+                                          <td rowspan="4" class="ponderation" style="text-align: center;">30%</td>
+                                      </tr>
+                                      <tr>
+                                          <td style="text-align: center;">{% trans '[5, 10[' %}</td>
+                                          <td style="text-align: center;">15</td>
+                                      </tr>
+                                      <tr>
+                                          <td style="text-align: center;">{% trans '[3, 5[' %}</td>
+                                          <td style="text-align: center;">5</td>
+                                      </tr>
+                                      <tr>
+                                          <td style="text-align: center;">{% trans '[0, 3[' %}</td>
+                                          <td style="text-align: center;">0</td>
+                                      </tr>
+                                      <!-- Score Réputation -->
+                                      <tr class="metric-header">
+                                          <td colspan="3" style="text-align: left;">{% trans 'Relationship Reputation Score' %}</td>
+                                      </tr>
+                                      <tr>
+                                          <td style="text-align: center;">{% trans 'Excellent' %}</td>
+                                          <td style="text-align: center;">20</td>
+                                          <td rowspan="4" class="ponderation" style="text-align: center;">15%</td>
+                                      </tr>
+                                      <tr>
+                                          <td style="text-align: center;">{% trans 'Good' %}</td>
+                                          <td style="text-align: center;">15</td>
+                                      </tr>
+                                      <tr>
+                                          <td style="text-align: center;">{% trans 'Average' %}</td>
+                                          <td style="text-align: center;">10</td>
+                                      </tr>
+                                      <tr>
+                                          <td style="text-align: center;" >{% trans 'To observe' %}</td>
+                                          <td style="text-align: center;">5</td>
+                                      </tr>
+                                      <!-- Score Positionnement -->
+                                      <tr class="metric-header">
+                                          <td colspan="3" style="text-align: left;">{% trans 'Market Positioning Score' %}</td>
+                                      </tr>
+                                      <tr>
+                                          <td style="text-align: center;">{% trans 'Leader' %}</td>
+                                          <td style="text-align: center;">20</td>
+                                          <td rowspan="4" class="ponderation" style="text-align: center;">15%</td>
+                                      </tr>
+                                      <tr>
+                                          <td style="text-align: center;">{% trans 'Major Player' %}</td>
+                                          <td style="text-align: center;">15</td>
+                                      </tr>
+                                      <tr>
+                                          <td style="text-align: center;">{% trans 'Marginal Player' %}</td>
+                                          <td style="text-align: center;">10</td>
+                                      </tr>
+                                      <tr>
+                                          <td style="text-align: center;">{% trans 'Non-significant' %}</td>
+                                          <td style="text-align: center;">5</td>
+                                      </tr>
+                                  </tbody>
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
     </div>
-  </div>
-  {% endblock %}
+    {% endblock %}
 </body>
 </html>

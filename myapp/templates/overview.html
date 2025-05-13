@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apréçu des données</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <style>
         body {
@@ -108,24 +107,27 @@
 </head>
 <body>
     {% extends 'base.html' %}
-
-    {% block title %}Data Overview{% endblock %}
+    {% load i18n %}
+    
+    {% block title %}{% trans "Data Overview" %}{% endblock %}
 
     {% block content %}
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="mb-4 text-center" style="color: #d4af37;">Aperçu des données</h1>
+                <h1 class="mb-4 text-center" style="color: #d4af37;">{% trans "Data Overview" %}</h1>
                 <div class="card">
                     <div class="card-body">
                         <!-- Affichage de la forme des données -->
                         <div class="section mb-3">
-                            <h5 class="section-title">Dimensions de la base de données</h5>
+                           
+                            <h5 class="section-title">{% trans "Database Dimensions" %}</h5>
+
                             <p>{{ formatted_shape }}</p>
                         </div>
                         <!-- Affichage des données sous forme de texte formaté -->
                         <div class="section">
-                            <h5 class="section-title">Affichage complet des données</h5>
+                            <h5 class="section-title">{% trans "Full Data Display" %}</h5>
                             <pre id="tab">{{ data_full|safe }}</pre>
                         </div>
                     </div>

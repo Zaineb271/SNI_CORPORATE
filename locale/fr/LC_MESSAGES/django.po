@@ -1,0 +1,295 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: bfi 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-05-09 16:00+0000\n"
+"PO-Revision-Date: 2025-05-09 16:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: French <fr@example.com>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "Carthago Scoring"
+msgstr "Carthago Scoring"
+
+msgid "CARTHAGO SCORING 1.0.0"
+msgstr "CARTHAGO SCORING 1.0.0"
+
+msgid "Welcome admin"
+msgstr "Bienvenue admin"
+
+msgid "Quick search ..."
+msgstr "Recherche rapide ..."
+
+msgid "Data Overview"
+msgstr "Aperçu des données"
+
+msgid "Score Model Selection"
+msgstr "Sélection du Modèle de Score"
+
+msgid "Risk Score Generation"
+msgstr "Génération Note Risque"
+
+msgid "Score"
+msgstr "Score"
+
+msgid "PD"
+msgstr "PD"
+
+msgid "LGD"
+msgstr "LGD"
+
+msgid "EAD"
+msgstr "EAD"
+
+msgid "Periodic Risk Evaluation"
+msgstr "Évaluation Périodique du Risque"
+
+msgid "360° Risk Portfolio View"
+msgstr "Vision 360° du portefeuille risque"
+
+msgid "Client File"
+msgstr "Fiche Client"
+
+msgid "Logo"
+msgstr "Logo"
+
+msgid "User"
+msgstr "Utilisateur"
+
+msgid "Folder"
+msgstr "Dossier"
+
+msgid "Footer Logo"
+msgstr "Logo Pied de Page"
+
+msgid "Database Dimensions"
+msgstr "Dimensions de la base de données"
+
+msgid "Full Data Display"
+msgstr "Affichage complet des données"
+
+msgid "Scoring Variables Configuration"
+msgstr "Paramètrage des Variables Scoring"
+
+msgid "Financial Pillar"
+msgstr "Pilier Financier"
+
+msgid "Assigned Score"
+msgstr "Score attribué"
+
+msgid "Weighting"
+msgstr "Pondération"
+
+msgid "Financial Autonomy Score: Equity/Total Balance Sheet"
+msgstr "Score Autonomie Financière : Capitaux propres/Total du bilan"
+
+msgid "Ratio"
+msgstr "Ratio"
+
+msgid "Net Profitability Score: Net Income/Revenue"
+msgstr "Score Rentabilité Nette : Résultat Net / Chiffre d'affaires"
+
+msgid "General Liquidity Score: Current Assets/Current Liabilities"
+msgstr "Score Liquidité Générale : Actifs circulants / Passifs courants"
+
+msgid "Debt Score: Financial Debt/Cash Flow from Operations"
+msgstr "Score Endettement : Dettes financières / CAF"
+
+msgid "Behavioral Pillar"
+msgstr "Pilier Comportemental"
+
+msgid "Payment Default Score"
+msgstr "Score Défaut de paiement"
+
+msgid "No Overdue Payments"
+msgstr "Absence d'impayés"
+
+msgid "Presence of Overdue Payments"
+msgstr "Présence d'impayés"
+
+msgid "Relationship Seniority Score"
+msgstr "Score Ancienneté de la Relation"
+
+msgid "Relationship Reputation Score"
+msgstr "Score Réputation de la Relation"
+
+msgid "Very Good"
+msgstr "Très bonne"
+
+msgid "Good"
+msgstr "Bonne"
+
+msgid "Average"
+msgstr "Moyenne"
+
+msgid "To observe"
+msgstr "A surveiller"
+
+msgid "Excellent"
+msgstr "Excellent"
+
+msgid "Market Positioning Score"
+msgstr "Score Positionnement sur le marché"
+
+msgid "Leader"
+msgstr "Leader"
+
+msgid "Major Player"
+msgstr "Acteur majeur"
+
+msgid "Marginal Player"
+msgstr "Acteur marginal"
+
+msgid "Non-Significant"
+msgstr "Non significatif"
+
+msgid "Score Summary"
+msgstr "Récap Scores"
+
+msgid "Third-Party Code"
+msgstr "Code Tiers"
+
+msgid "Financial Score"
+msgstr "Score Financier"
+
+msgid "Behavioral Score"
+msgstr "Score Comportemental"
+
+msgid "Global Score"
+msgstr "Score Global"
+
+msgid "Probability of Default"
+msgstr "Probabilité de Défaut"
+
+msgid "Risk Class"
+msgstr "Classe de Risque"
+
+msgid "Risk Comment"
+msgstr "Commentaire Risque"
+
+msgid "Loss Given Default"
+msgstr "Taux de Perte en Cas de Défaut"
+
+msgid "Collateral Type"
+msgstr "Type de sûreté"
+
+msgid "Exposure at Default"
+msgstr "Exposition au moment du défaut"
+
+msgid "360° Portfolio View"
+msgstr "Vision 360° du portefeuille"
+
+msgid "Portfolio Summary"
+msgstr "Résumé du portefeuille"
+
+msgid "Number of Files"
+msgstr "Nombre de dossiers"
+
+msgid "Total EAD"
+msgstr "EAD Total"
+
+msgid "Total ECL"
+msgstr "ECL Total"
+
+msgid "Total UL"
+msgstr "UL Total"
+
+msgid "Total RWA"
+msgstr "RWA Total"
+
+msgid "Capital to Reserve (8%)"
+msgstr "Fonds Propres à réserver (8%)"
+
+msgid "Average PD"
+msgstr "PD Moyenne"
+
+msgid "Average LGD"
+msgstr "LGD Moyenne"
+
+msgid "Overall Provision Rate"
+msgstr "Taux de provision global"
+
+msgid "Distribution by Risk Class"
+msgstr "Répartition par classe de risque"
+
+msgid "Risk Indicators"
+msgstr "Indicateurs Risque"
+
+msgid "Provisioning Rate"
+msgstr "Taux de Provisionnement"
+
+msgid "Capital to Reserve"
+msgstr "Fonds Propres à Réserver"
+
+msgid "Enter Client Third-Party Code"
+msgstr "Entrer Code Tiers du client"
+
+msgid "Search"
+msgstr "Rechercher"
+
+msgid "Please provide a Client Third-Party Code"
+msgstr "Veuillez fournir un Numtiers du client"
+
+msgid "Identification"
+msgstr "Identification"
+
+msgid "Rating according to IFRS 9"
+msgstr "Notation selon IFRS 9"
+
+msgid "Relationship Age Score"
+msgstr "Score d'ancienneté de la relation"
+
+msgid "Debt Score: Financial Debt / Cash Flow"
+msgstr "Score d'endettement : Dette financière / Flux de trésorerie"
+
+msgid "General Liquidity Score: Current Assets / Current Liabilities"
+msgstr "Score de liquidité générale : Actifs courants / Passifs courants"
+
+msgid "Net Profitability Score: Net Income / Revenue"
+msgstr "Score de rentabilité nette : Résultat net / Chiffre d'affaires"
+
+msgid "Personal Guarantee"
+msgstr "Caution Personnelle"
+
+msgid "Financial Guarantee"
+msgstr "Garantie Financière"
+
+msgid "Real Estate Mortgage"
+msgstr "Hypothèque Immobilière"
+
+msgid "Pledge on Asset"
+msgstr "Nantissement sur Bien"
+
+msgid "No Guarantee"
+msgstr "Sans Garantie"
+
+msgid "Average PD (%)"
+msgstr "PD Moyenne (%)"
+
+msgid "Global Provision Rate"
+msgstr "Taux de Provision Global"
+
+msgid "RWA"
+msgstr "Actifs Pondérés par le Risque"
+
+msgid "ECL"
+msgstr "Perte de Crédit Attendue"
+
+msgid "UL"
+msgstr "Perte Non Attendue"
+
+msgid "Client Sheet"
+msgstr "Fiche Client"
+
+msgid "Please provide a client Third-Party Code."
+msgstr "Veuillez fournir un Code tiers du client."
+
+msgid "Has Defaults"
+msgstr "Présence d'impayés"
+
+msgid "No Defaults"
+msgstr "Absence d'impayés"

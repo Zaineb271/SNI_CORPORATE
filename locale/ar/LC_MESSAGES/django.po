@@ -1,0 +1,340 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: bfi 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-05-09 16:00+0000\n"
+"PO-Revision-Date: 2025-05-09 16:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: Arabic <ar@example.com>\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
+
+msgid "Carthago Scoring"
+msgstr "كارثاغو للتسجيل"
+
+msgid "CARTHAGO SCORING 1.0.0"
+msgstr "كارثاغو للتسجيل 1.0.0"
+
+msgid "Welcome admin"
+msgstr "مرحبًا بالمدير"
+
+msgid "Quick search ..."
+msgstr "بحث سريع ..."
+
+msgid "Data Overview"
+msgstr "نظرة عامة على البيانات"
+
+msgid "Score Model Selection"
+msgstr "اختيار نموذج الدرجات"
+
+msgid "Risk Score Generation"
+msgstr "توليد درجة المخاطر"
+
+msgid "Score"
+msgstr "الدرجة"
+
+msgid "PD"
+msgstr "احتمالية التخلف عن السداد"
+
+msgid "LGD"
+msgstr "الخسارة عند التخلف"
+
+msgid "EAD"
+msgstr "التعرض عند التخلف"
+
+msgid "Periodic Risk Evaluation"
+msgstr "تقييم دوري للمخاطر"
+
+msgid "360° Risk Portfolio View"
+msgstr "رؤية 360 درجة لمحفظة المخاطر"
+
+msgid "Client File"
+msgstr "ملف العميل"
+
+msgid "Logo"
+msgstr "شعار"
+
+msgid "User"
+msgstr "مستخدم"
+
+msgid "Folder"
+msgstr "مجلد"
+
+msgid "Footer Logo"
+msgstr "شعار التذييل"
+
+msgid "Database Dimensions"
+msgstr "أبعاد قاعدة البيانات"
+
+msgid "Full Data Display"
+msgstr "عرض البيانات الكامل"
+
+msgid "Paramètrage des Variables Scoring"
+msgstr "إعداد متغيرات التقييم"
+
+msgid "Financial Pillar"
+msgstr "الركيزة المالية"
+
+msgid "Assigned Score"
+msgstr "الدرجة الممنوحة"
+
+msgid "Weighting"
+msgstr "الوزن"
+
+msgid "Financial Autonomy Score: Equity/Total Balance Sheet"
+msgstr "درجة الاستقلالية المالية: حقوق الملكية / إجمالي الميزانية"
+
+msgid "Ratio"
+msgstr "النسبة"
+
+msgid "Net Profitability Score: Net Income/Revenue"
+msgstr "درجة الربحية الصافية: صافي الدخل / الإيرادات"
+
+msgid "General Liquidity Score: Current Assets/Current Liabilities"
+msgstr "درجة السيولة العامة: الأصول المتداولة / الالتزامات المتداولة"
+
+msgid "Debt Score: Financial Debt/Cash Flow from Operations"
+msgstr "درجة المديونية: الديون المالية / التدفق النقدي من العمليات"
+
+msgid "Behavioral Pillar"
+msgstr "الركيزة السلوكية"
+
+msgid "Payment Default Score"
+msgstr "درجة التخلف عن السداد"
+
+msgid "No Overdue Payments"
+msgstr "عدم وجود مدفوعات متأخرة"
+
+msgid "Presence of Overdue Payments"
+msgstr "وجود مدفوعات متأخرة"
+
+msgid "Relationship Seniority Score"
+msgstr "درجة أقدمية العلاقة"
+
+msgid "Relationship Reputation Score"
+msgstr "درجة سمعة العلاقة"
+
+msgid "Very Good"
+msgstr "جيد جدًا"
+
+msgid "Good"
+msgstr "جيد"
+
+msgid "Average"
+msgstr "متوسط"
+
+msgid "To observe"
+msgstr "للمراقبة"
+
+msgid "Market Positioning Score"
+msgstr "درجة التموضع في السوق"
+
+msgid "Leader"
+msgstr "رائد"
+
+msgid "Major Player"
+msgstr "فاعل رئيسي"
+
+msgid "Marginal Player"
+msgstr "فاعل هامشي"
+
+msgid "Score Summary"
+msgstr "ملخص الدرجات"
+
+msgid "Third-Party Code"
+msgstr "رمز الطرف الثالث"
+
+msgid "Financial Score"
+msgstr "الدرجة المالية"
+
+msgid "Behavioral Score"
+msgstr "الدرجة السلوكية"
+
+msgid "Global Score"
+msgstr "الدرجة العامة"
+
+msgid "Probability of Default"
+msgstr "احتمالية التخلف عن السداد"
+
+msgid "Risk Class"
+msgstr "فئة المخاطر"
+
+msgid "Risk Comment"
+msgstr "تعليق المخاطر"
+
+msgid "Loss Given Default (LGD)"
+msgstr "معدل الخسارة في حالة التخلف (LGD)"
+
+msgid "Collateral Type"
+msgstr "نوع الضمان"
+
+msgid "Exposure at Default"
+msgstr "التعرض عند التخلف"
+
+msgid "360° Portfolio View"
+msgstr "رؤية شاملة 360 درجة للمحفظة"
+
+msgid "Portfolio Summary"
+msgstr "ملخص المحفظة"
+
+msgid "Number of Files"
+msgstr "عدد الملفات"
+
+msgid "Total EAD"
+msgstr "إجمالي التعرض عند التخلف"
+
+msgid "Total ECL"
+msgstr "إجمالي الخسائر المتوقعة"
+
+msgid "Total UL"
+msgstr "إجمالي الخسائر غير المتوقعة"
+
+msgid "Total RWA"
+msgstr "إجمالي الأصول المرجحة بالمخاطر"
+
+msgid "Capital to Reserve (8%)"
+msgstr "رأس المال المحجوز (8%)"
+
+msgid "Average PD"
+msgstr "متوسط احتمالية التخلف"
+
+msgid "Average LGD"
+msgstr "متوسط معدل الخسارة"
+
+msgid "Overall Provision Rate"
+msgstr "معدل التزويد العام"
+
+msgid "Distribution by Risk Class"
+msgstr "التوزيع حسب فئة المخاطر"
+
+msgid "Risk Indicators"
+msgstr "مؤشرات المخاطر"
+
+msgid "Capital to Reserve"
+msgstr "رأس المال المحجوز"
+
+msgid "Enter Client Third-Party Code"
+msgstr "أدخل رمز الطرف الثالث للعميل"
+
+msgid "Search"
+msgstr "بحث"
+
+msgid "Please provide a Client Third-Party Code"
+msgstr "يرجى تقديم رمز الطرف الثالث للعميل"
+
+msgid "Identification"
+msgstr "التعريف"
+
+msgid "Rating according to IFRS 9"
+msgstr "التصنيف وفقًا لمعيار IFRS 9"
+
+msgid "Ratio 0"
+msgstr "النسبة 0"
+
+msgid "Ratio < 5"
+msgstr "النسبة أقل من 5"
+
+msgid "Ratio < 10"
+msgstr "النسبة أقل من 10"
+
+msgid "Ratio < 20"
+msgstr "النسبة أقل من 20"
+
+msgid "Ratio > 20"
+msgstr "النسبة أكثر من 20"
+
+msgid "Ratio < 40"
+msgstr "النسبة أقل من 40"
+
+msgid "Ratio > 40"
+msgstr "النسبة أكثر من 40"
+
+msgid "Non-significant"
+msgstr "غير هام"
+
+msgid "Ratio < 1"
+msgstr "النسبة أقل من 1"
+
+msgid "Ratio < 2"
+msgstr "النسبة أقل من 2"
+
+msgid "Ratio > 2"
+msgstr "النسبة أكثر من 2"
+
+msgid "Ratio > 5"
+msgstr "النسبة أكثر من 5"
+
+msgid "Ratio ≥ 2.5"
+msgstr "النسبة أكبر من أو تساوي 2.5"
+
+msgid "Ratio < 2.5"
+msgstr "النسبة أقل من 2.5"
+
+msgid "Excellent"
+msgstr "ممتاز"
+
+msgid "No Defaults"
+msgstr "لا توجد حالات تخلف"
+
+msgid "Has Defaults"
+msgstr "يوجد حالات تخلف"
+
+msgid "Relationship Age Score"
+msgstr "درجة أقدمية العلاقة"
+
+msgid "Debt Score: Financial Debt / Cash Flow"
+msgstr "درجة المديونية: الديون المالية / التدفق النقدي"
+
+msgid "General Liquidity Score: Current Assets / Current Liabilities"
+msgstr "درجة السيولة العامة: الأصول المتداولة / الالتزامات المتداولة"
+
+msgid "Net Profitability Score: Net Income / Revenue"
+msgstr "درجة الربحية الصافية: صافي الدخل / الإيرادات"
+
+msgid "Scoring Variables Configuration"
+msgstr "إعداد متغيرات التقييم"
+
+msgid "Loss Given Default"
+msgstr "الخسارة في حالة التخلف عن السداد"
+
+msgid "Personal Guarantee"
+msgstr "الضمان الشخصي"
+
+msgid "Financial Guarantee"
+msgstr "الضمان المالي"
+
+msgid "Real Estate Mortgage"
+msgstr "الرهن العقاري"
+
+msgid "Pledge on Asset"
+msgstr "التعهد على الأصل"
+
+msgid "No Guarantee"
+msgstr "بدون ضمان"
+
+msgid "Average PD (%)"
+msgstr "متوسط احتمالية التخلف عن السداد (%)"
+
+msgid "Global Provision Rate"
+msgstr "معدل التزويد العام"
+
+msgid "Provisioning Rate"
+msgstr "معدل التزويد"
+
+msgid "RWA"
+msgstr "الأصول المرجحة بالمخاطر"
+
+msgid "ECL"
+msgstr "الخسارة المتوقعة"
+
+msgid "UL"
+msgstr "الخسارة غير المتوقعة"
+
+msgid "Client Sheet"
+msgstr "نموذج العميل"
+
+msgid "Please provide a client Third-Party Code."
+msgstr "يرجى تقديم رمز الطرف الثالث للعميل."

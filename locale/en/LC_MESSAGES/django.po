@@ -1,0 +1,275 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: bfi 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-05-09 16:00+0000\n"
+"PO-Revision-Date: 2025-05-09 16:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: English <en@example.com>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Carthago Scoring"
+msgstr "Carthago Scoring"
+
+msgid "CARTHAGO SCORING 1.0.0"
+msgstr "CARTHAGO SCORING 1.0.0"
+
+msgid "Welcome admin"
+msgstr "Welcome admin"
+
+msgid "Quick search ..."
+msgstr "Quick search ..."
+
+msgid "Data Overview"
+msgstr "Data Overview"
+
+msgid "Score Model Selection"
+msgstr "Score Model Selection"
+
+msgid "Risk Score Generation"
+msgstr "Risk Score Generation"
+
+msgid "Score"
+msgstr "Score"
+
+msgid "PD"
+msgstr "PD"
+
+msgid "LGD"
+msgstr "LGD"
+
+msgid "EAD"
+msgstr "EAD"
+
+msgid "Periodic Risk Evaluation"
+msgstr "Periodic Risk Evaluation"
+
+msgid "360° Risk Portfolio View"
+msgstr "360° Risk Portfolio View"
+
+msgid "Client File"
+msgstr "Client File"
+
+msgid "Logo"
+msgstr "Logo"
+
+msgid "User"
+msgstr "User"
+
+msgid "Folder"
+msgstr "Folder"
+
+msgid "Footer Logo"
+msgstr "Footer Logo"
+
+msgid "Database Dimensions"
+msgstr "Database Dimensions"
+
+msgid "Full Data Display"
+msgstr "Full Data Display"
+
+msgid "Variable Selection Scoring"
+msgstr "Variable Selection Scoring"
+
+msgid "Financial Pillar"
+msgstr "Financial Pillar"
+
+msgid "Assigned Score"
+msgstr "Assigned Score"
+
+msgid "Weighting"
+msgstr "Weighting"
+
+msgid "Financial Autonomy Score: Equity/Total Balance Sheet"
+msgstr "Financial Autonomy Score: Equity/Total Balance Sheet"
+
+msgid "Ratio"
+msgstr "Ratio"
+
+msgid "Net Profitability Score: Net Income/Revenue"
+msgstr "Net Profitability Score: Net Income/Revenue"
+
+msgid "General Liquidity Score: Current Assets/Current Liabilities"
+msgstr "General Liquidity Score: Current Assets/Current Liabilities"
+
+msgid "Debt Score: Financial Debt/Cash Flow from Operations"
+msgstr "Debt Score: Financial Debt/Cash Flow from Operations"
+
+msgid "Behavioral Pillar"
+msgstr "Behavioral Pillar"
+
+msgid "Payment Default Score"
+msgstr "Payment Default Score"
+
+msgid "No Overdue Payments"
+msgstr "No Overdue Payments"
+
+msgid "Presence of Overdue Payments"
+msgstr "Presence of Overdue Payments"
+
+msgid "Relationship Seniority Score"
+msgstr "Relationship Seniority Score"
+
+msgid "Relationship Reputation Score"
+msgstr "Relationship Reputation Score"
+
+msgid "Very Good"
+msgstr "Very Good"
+
+msgid "Good"
+msgstr "Good"
+
+msgid "Average"
+msgstr "Average"
+
+msgid "To observe"
+msgstr "To observe"
+
+msgid "Market Positioning Score"
+msgstr "Market Positioning Score"
+
+msgid "Leader"
+msgstr "Leader"
+
+msgid "Major Player"
+msgstr "Major Player"
+
+msgid "Marginal Player"
+msgstr "Marginal Player"
+
+msgid "Non-Significant"
+msgstr "Non-Significant"
+
+msgid "Probability of Default"
+msgstr "Probability of Default"
+
+msgid "Risk Class"
+msgstr "Risk Class"
+
+msgid "Risk Comment"
+msgstr "Risk Comment"
+
+msgid "Loss Given Default"
+msgstr "Loss Given Default"
+
+msgid "Collateral Type"
+msgstr "Collateral Type"
+
+msgid "Exposure at Default"
+msgstr "Exposure at Default"
+
+msgid "360° Portfolio View"
+msgstr "360° Portfolio View"
+
+msgid "Portfolio Summary"
+msgstr "Portfolio Summary"
+
+msgid "Number of Files"
+msgstr "Number of Files"
+
+msgid "Total EAD"
+msgstr "Total EAD"
+
+msgid "Total ECL"
+msgstr "Total ECL"
+
+msgid "Total UL"
+msgstr "Total UL"
+
+msgid "Total RWA"
+msgstr "Total RWA"
+
+msgid "Capital to Reserve (8%)"
+msgstr "Capital to Reserve (8%)"
+
+msgid "Average LGD"
+msgstr "Average LGD"
+
+msgid "Overall Provision Rate"
+msgstr "Overall Provision Rate"
+
+msgid "Distribution by Risk Class"
+msgstr "Distribution by Risk Class"
+
+msgid "Risk Indicators"
+msgstr "Risk Indicators"
+
+msgid "Provisioning Rate"
+msgstr "Provisioning Rate"
+
+msgid "Capital to Reserve"
+msgstr "Capital to Reserve"
+
+msgid "Enter Client Third-Party Code"
+msgstr "Enter Client Third-Party Code"
+
+msgid "Search"
+msgstr "Search"
+
+msgid "Please provide a Client Third-Party Code"
+msgstr "Please provide a Client Third-Party Code"
+
+msgid "Identification"
+msgstr "Identification"
+
+msgid "Rating according to IFRS 9"
+msgstr "Rating according to IFRS 9"
+
+msgid "Score Summary"
+msgstr "Score Summary"
+
+msgid "Third-Party Code"
+msgstr "Third-Party Code"
+
+msgid "Financial Score"
+msgstr "Financial Score"
+
+msgid "Behavioral Score"
+msgstr "Behavioral Score"
+
+msgid "Global Score"
+msgstr "Global Score"
+
+msgid "Excellent"
+msgstr "Excellent"
+
+msgid "Personal Guarantee"
+msgstr "Personal Guarantee"
+
+msgid "Financial Guarantee"
+msgstr "Financial Guarantee"
+
+msgid "Real Estate Mortgage"
+msgstr "Real Estate Mortgage"
+
+msgid "Pledge on Asset"
+msgstr "Pledge on Asset"
+
+msgid "No Guarantee"
+msgstr "No Guarantee"
+
+msgid "RWA"
+msgstr "Risk-Weighted Assets"
+
+msgid "ECL"
+msgstr "Expected Credit Loss"
+
+msgid "UL"
+msgstr "Unexpected Loss"
+
+msgid "Average PD"
+msgstr "Average PD"
+
+msgid "Global Provision Rate"
+msgstr "Global Provision Rate"
+
+
+msgid "Client Sheet"
+msgstr "Client Sheet"
+
+msgid "Please provide a client Third-Party Code."
+msgstr "Please provide a client Third-Party Code."

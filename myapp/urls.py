@@ -5,9 +5,11 @@ from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 
 
+app_name = 'myapp'
 
 
 urlpatterns = [
+
     # path('', views.index, name='index'),
     path('',views.data_overview_view, name='overview'),
     # path('upload/', views.upload_file, name='upload_file'),

@@ -491,52 +491,25 @@ def score_positionnement(pos):
     elif "non significatif" in pos:
         return 5
     return 0
+from django.utils.translation import gettext_lazy as _
 
 def attribuer_niveau_commentaire(pd):
     try:
         pd = float(pd)
-        if pd >= 99.99:
-            return 5, "A surveiller"
-        elif pd >= 99.75:
-            return 5, "A surveiller"
-        elif pd >= 99.33:
-            return 5, "A surveiller"
-        elif pd >= 98.20:
-            return 5, "A surveiller"
-        elif pd >= 95.26:
-            return 5, "A surveiller"
-        elif pd >= 88.08:
-            return 5, "A surveiller"
-        elif pd >= 73.11:
-            return 4, "Moyen"
-        elif pd >= 50.00:
-            return 4, "Moyen"
-        elif pd >= 26.89:
-            return 4, "Moyen"
-        elif pd >= 11.92:
-            return 3, "Bon"
-        elif pd >= 4.74:
-            return 3, "Bon"
-        elif pd >= 1.80:
-            return 2, "Très Bon"
-        elif pd >= 0.67:
-            return 2, "Très Bon"
-        elif pd >= 0.25:
-            return 2, "Très Bon"
-        elif pd >= 0.09:
-            return 1, "Excellent"
-        elif pd >= 0.03:
-            return 1, "Excellent"
-        elif pd >= 0.01:
-            return 1, "Excellent"
-        elif pd >= 0.00:
-            return 1, "Excellent"
-        else:
-            return 1, "Excellent"
+        if 0.00 <= pd <= 0.03:
+            return 1, _("Excellent")
+        elif 0.03 < pd <= 0.25:
+            return 2, _("Very Good")
+        elif 0.25 < pd <= 4.74:
+            return 3, _("Good")
+        elif 4.74 < pd <= 26.89:
+            return 4, _("Average")
+        elif 26.89 < pd <= 100.00:
+            return 5, _("To Observe")
     except (ValueError, TypeError):
         logger.error(f"Invalid PD value: {pd}")
-        return 1, "Excellent"
-
+        return 1, _("Excellent")
+    
 def calculer_lgd(type_surete):
     if type_surete == "Garantie financière":
         return 10
@@ -625,6 +598,11 @@ def process_dataframe(request):
         if 'numtiers' not in df.columns:
             logger.error("Missing required column: numtiers")
             return pd.DataFrame()
+  
+        df["autonomie_financière"] = df["CAPITAUX_PROPRES"] / df["TOTAL_BILAN"]
+        df["rentabilité_nette"] = df["RESULTAT_NET"] / df["CAPITAUX_PROPRES"]
+        df["liquidité_générale"] = df["ACTIF_CIRCULANT"] / df["PASSIF_CIRCULANT"]
+        df["endettement"] = df["DETTE_FINANCIERE"] / df["EXCEDENT_BRUT_EXPLOITATION"]
 
         # Appliquer les fonctions de scoring financier
         df['score_autonomie_financiere'] = df['autonomie_financière'].apply(score_autonomie_financiere)
@@ -807,6 +785,18 @@ def pd_view(request):
         'error': None
     })
   
+from django.utils.translation import gettext_lazy as _
+
+def translate_type_surete(type_surete):
+    """Map type_surete values to translatable strings."""
+    translations = {
+        'Caution personnelle': _('Personal Guarantee'),
+        'Garantie financière': _('Financial Guarantee'),
+        'Hypothèque immobilière': _('Real Estate Mortgage'),
+        'Nantissement sur bien': _('Pledge on Asset'),
+        'Sans garantie': _('No Guarantee'),
+    }
+    return translations.get(type_surete, type_surete)
 
 def lgd_view(request):
     df = process_dataframe(request)
@@ -818,7 +808,7 @@ def lgd_view(request):
             'error': "No data available. Please place BD_SNI.xlsx in C:\\Users\\ikallel\\SystemeNotationInterne\\myapp\\static\\"
         })
 
-    # Define required and optional columns
+# Define required and optional columns
     required_columns = ['numtiers', 'taux_lgd']
     optional_columns = ['type de sureté']  # Use actual column name after debugging
     missing_required = [col for col in required_columns if col not in df.columns]
@@ -836,7 +826,12 @@ def lgd_view(request):
     if 'type de sureté' in df.columns:
         selected_columns.append('type de sureté')
         rename_dict['type de sureté'] = 'type_surete'
-    companies = df[selected_columns].rename(columns=rename_dict).fillna({'type_surete': 'N/A'}).to_dict('records')
+    df = df[selected_columns].rename(columns=rename_dict).fillna({'type_surete': 'N/A'})
+    
+    # Translate type_surete
+    df['type_surete'] = df['type_surete'].apply(translate_type_surete)
+
+    companies = df.to_dict('records')
     logger.debug(f"LGD view companies: {len(companies)}")
     print("First few companies:", companies[:5])
 
@@ -910,6 +905,8 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 import logging
 logger = logging.getLogger(__name__)
 
+from django.utils.translation import gettext as _  # Import translation function
+
 def vision360_view(request):
     try:
         df = process_dataframe(request)
@@ -945,13 +942,13 @@ def vision360_view(request):
             sns.countplot(
                 data=df,
                 x='Commentaire_Risque',
-                order=["Excellent", "Très Bon", "Bon", "Moyen", "À surveiller"],
+                order=[_("Excellent"), _("Very Good"), _("Good"), _("Average"), _("To observe")],
                 palette='viridis',
                 ax=ax
             )
-            ax.set_title("Répartition par classe de risque")
-            ax.set_xlabel("Classe de Risque")
-            ax.set_ylabel("Nombre de clients")
+            ax.set_title(_("Distribution by Risk Class"))
+            ax.set_xlabel(_("Risk Class"))
+            ax.set_ylabel(_("Number of Clients"))
             ax.tick_params(axis='x', rotation=30)
             risk_level_plot = fig_to_base64(fig)
         finally:

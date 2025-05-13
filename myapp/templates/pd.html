@@ -1,9 +1,12 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ LANGUAGE_CODE }}" dir="{% if LANGUAGE_CODE == 'ar' %}rtl{% else %}ltr{% endif %}">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Probabilité de Défaut</title>
+    <title>{% block title %}{% trans 'Probability of Default' %}{% endblock %}</title>
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -12,7 +15,7 @@
       body {
         font-family: Arial, sans-serif;
         background-color: #f0f0f0;
-        color: #333;
+    color: #333;
       }
       div.container.content {
         margin-left: 350px;
@@ -80,7 +83,7 @@
       td {
         border: 1px solid #ddd;
         padding: 10px;
-        text-align: center; /* Center table content */
+        text-align: center;
       }
       th {
         background-color: #333;
@@ -89,106 +92,120 @@
       tr:nth-child(even) {
         background-color: #f9f9f9;
       }
-
       .pagination {
         justify-content: center;
         margin: 20px 0;
-    }
-    .pagination .page-item.active .page-link {
+      }
+      .pagination .page-item.active .page-link {
         background-color: #f4c542;
         border-color: #f4c542;
         color: #333;
-    }
-    .pagination .page-link {
+      }
+      .pagination .page-link {
         color: #333;
-    }
-    .pagination .page-link:hover {
+      }
+      .pagination .page-link:hover {
         background-color: #e1b52e;
         color: #fff;
-    }
+      }
+      /* RTL adjustments for Arabic */
+      [dir="rtl"] .container {
+        margin-left: 0;
+        margin-right: 180px;
+        padding-left: 0;
+        padding-right: 200px;
+      }
+      [dir="rtl"] h1,
+      [dir="rtl"] h2 {
+        text-align: right;
+      }
+      [dir="rtl"] th,
+      [dir="rtl"] td {
+        text-align: right;
+      }
+      [dir="rtl"] .pagination {
+        direction: rtl;
+      }
     </style>
   </head>
   <body>
-{% extends 'base.html' %}
-{% block title %}Probabilité de Défaut{% endblock %}
-{% block content %}
-<div class="container mt-5">
-  <h1 class="mb-4" style="text-align: center; color: #d4af37;">Probabilité de Défaut (PD)</h1>
-  {% if error %}
-      <div class="alert alert-danger">{{ error }}</div>
-  {% endif %}
+    {% block content %}
+    <div class="container mt-5">
+      <h1 class="mb-4" style="text-align: center; color: #f4c542;">{% trans 'Probability of Default' %}</h1>
+      {% if error %}
+          <div class="alert alert-danger">{{ error }}</div>
+      {% endif %}
 
-  {% if page_obj %}
-
-      <table class="table table-striped table-bordered">
-          <thead>
-              <tr>
-                  <th style="text-align: center;">Code Tiers</th>
-                  <th style="text-align: center;">PD (%)</th>
-                  <th style="text-align: center;">Classe de Risque</th>
-                  <th style="text-align: center;">Commentaire Risque</th>
-              </tr>
-          </thead>
-          <tbody>
-              {% for company in page_obj %}
+      {% if page_obj %}
+          <table class="table table-striped table-bordered">
+              <thead>
                   <tr>
-                      <td>{{ company.numtiers }}</td>
-                      <td>{{ company.pd|floatformat:2 }} %</td>
-                      <td>{{ company.classe_de_risque }}</td>
-                      <td>{{ company.Commentaire_Risque }}</td>
+                      <th style="text-align: center;">{% trans 'Third-Party Code' %}</th>
+                      <th style="text-align: center;">{% trans 'PD' %}</th>
+                      <th style="text-align: center;">{% trans 'Risk Class' %}</th>
+                      <th style="text-align: center;">{% trans 'Risk Comment' %}</th>
                   </tr>
-              {% empty %}
-                  <tr>
-                      <td colspan="4" class="text-center">Aucune donnée disponible.</td>
-                  </tr>
-              {% endfor %}
-          </tbody>
-      </table>
+              </thead>
+              <tbody>
+                  {% for company in page_obj %}
+                      <tr>
+                          <td style="text-align: center;">{{ company.numtiers }}</td>
+                          <td style="text-align: center;">{{ company.pd|floatformat:2 }} %</td>
+                          <td style="text-align: center;">{{ company.classe_de_risque }}</td>
+                          <td style="text-align: center;">{{ company.Commentaire_Risque }}</td>
+                      </tr>
+                  {% empty %}
+                      <tr>
+                          <td colspan="4" class="text-center">{% trans 'Aucune donnée disponible.' %}</td>
+                      </tr>
+                  {% endfor %}
+              </tbody>
+          </table>
 
-      <!-- Pagination -->
-      <nav aria-label="Pagination">
-          <ul class="pagination">
-              {% if page_obj.has_previous %}
-                  <li class="page-item">
-                      <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Précédent">
-                          <span aria-hidden="true">&laquo;</span>
-                      </a>
-                  </li>
-              {% else %}
-                  <li class="page-item disabled">
-                      <span class="page-link" aria-hidden="true">&laquo;</span>
-                  </li>
-              {% endif %}
-
-              {% for num in page_obj.paginator.page_range %}
-                  {% if page_obj.number == num %}
-                      <li class="page-item active">
-                          <span class="page-link">{{ num }}</span>
-                      </li>
-                  {% elif num > page_obj.number|add:-3 and num < page_obj.number|add:3 %}
+          <!-- Pagination -->
+          <nav aria-label="{% trans 'Pagination' %}">
+              <ul class="pagination">
+                  {% if page_obj.has_previous %}
                       <li class="page-item">
-                          <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                          <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="{% trans 'Précédent' %}">
+                              <span aria-hidden="true">«</span>
+                          </a>
+                      </li>
+                  {% else %}
+                      <li class="page-item disabled">
+                          <span class="page-link" aria-hidden="true">«</span>
                       </li>
                   {% endif %}
-              {% endfor %}
 
-              {% if page_obj.has_next %}
-                  <li class="page-item">
-                      <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Suivant">
-                          <span aria-hidden="true">&raquo;</span>
-                      </a>
-                  </li>
-              {% else %}
-                  <li class="page-item disabled">
-                      <span class="page-link" aria-hidden="true">&raquo;</span>
-                  </li>
-              {% endif %}
-          </ul>
-      </nav>
-  {% else %}
-      <p class="text-center">Aucun client disponible.</p>
-  {% endif %}
-</div>
-{% endblock %}
+                  {% for num in page_obj.paginator.page_range %}
+                      {% if page_obj.number == num %}
+                          <li class="page-item active">
+                              <span class="page-link">{{ num }}</span>
+                          </li>
+                      {% elif num > page_obj.number|add:-3 and num < page_obj.number|add:3 %}
+                          <li class="page-item">
+                              <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                          </li>
+                      {% endif %}
+                  {% endfor %}
+
+                  {% if page_obj.has_next %}
+                      <li class="page-item">
+                          <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="{% trans 'Suivant' %}">
+                              <span aria-hidden="true">»</span>
+                          </a>
+                      </li>
+                  {% else %}
+                      <li class="page-item disabled">
+                          <span class="page-link" aria-hidden="true">»</span>
+                      </li>
+                  {% endif %}
+              </ul>
+          </nav>
+      {% else %}
+          <p class="text-center">{% trans 'Aucun client disponible.' %}</p>
+      {% endif %}
+    </div>
+    {% endblock %}
   </body>
 </html>
