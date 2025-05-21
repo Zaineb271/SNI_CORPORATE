@@ -1057,3 +1057,31 @@ def fiche_client_view(request):
     
     logger.debug("Rendering fiche_client.html for GET request")
     return render(request, "fiche_client.html")
+
+
+from django.shortcuts import render
+import pandas as pd
+import numpy as np
+from scipy.stats import norm
+
+def AnalyseFinanciere_view(request):
+    df = process_dataframe(request)
+    if df.empty:
+        logger.error("Empty DataFrame in AnalyseFinanciere_view")
+        return render(request, 'AnalyseFinanciere.html', {
+            'message': "Aucune donnée disponible. Veuillez placer BD_SNI.xlsx dans C:\\Users\\ikallel\\SystemeNotationInterne\\myapp\\static\\"
+        })
+
+    # GET request: afficher le tableau avec les champs demandés
+    selected_columns = ["numtiers", "Annee", "Raison_Sociale", "Secteurs", "Type_analyse"]
+    try:
+        df_display = df[selected_columns].drop_duplicates(subset=["Raison_Sociale"]).head(5)
+        table_data = df_display.to_dict(orient='records')
+    except KeyError as e:
+        logger.error(f"Colonnes manquantes : {e}")
+        table_data = [] 
+
+    logger.debug("Rendering AnalyseFinanciere.html for GET request")
+    return render(request, "AnalyseFinanciere.html", {
+        "table_data": table_data
+    })

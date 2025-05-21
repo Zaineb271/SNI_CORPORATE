@@ -25,6 +25,7 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(next_page='login'), name='logout'),
     #path('accounts/login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
     #path('accounts/logout/', auth_views.LogoutView.as_view(next_page='login'), name='logout'),
+    path('AnalyseFinanciere/', views.AnalyseFinanciere_view, name='AnalyseFinanciere'),
     path('pd/', views.pd_view, name='pd'),
     path('lgd/', views.lgd_view, name='lgd'),  # Ensure this line exists
     path('score/', views.score_view, name='score'),
